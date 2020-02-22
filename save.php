@@ -44,7 +44,22 @@ else
         echo "Failed insert:".mysqli_connect_error($conn);
     }
 
+header ('Content-Type: application/json');
 
+// Build an array $response
+$response = [
+    'product_name' => $product_name,
+    'brand_name' => $brand_name,
+ 
+    'suggested_replies' => $suggestedReplies,
+    'blocked_input' => false
+];
+
+// Convert an array to JSON string and send as a server response to the Snatchbot server
+echo json_encode($response);
+
+// End program
+die();
 	
 
 	?>
